@@ -4,7 +4,7 @@ import { config } from './config/config';
 import user from "./user/userRouts"
 const app = express();
 app.use(express.json())
-app.get("/user",user)
+app.use("/user",user)
 app.use((err: HttpError, req: Request, res: Response, next: NextFunction) => {
     const statusCode : number = err.statusCode || 500;
     res.status(statusCode).json({
