@@ -7,6 +7,8 @@ const listner =async ()=>{
     app.listen(config.port , ()=>{
         console.log("server listening at the port "+ config.port)
     })
+
+    
 }
 
 listner()
