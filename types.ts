@@ -1,3 +1,5 @@
+import { Types } from "mongoose";
+
 export interface User {
    id:number,
    name:string,
@@ -9,10 +11,16 @@ export interface User {
 export interface book {
    _id:number,
    title:string,
-   author:string,
+   author:Types.ObjectId,
    genre:string,
-   coverImage:string,
+   coverImage:string,   
    file:string,
    createdAt:number,
    updatedAt:number
 }
+
+declare module "express-serve-static-core" {
+   interface Request {
+     userId?: string | number; // Adjust type based on your usage
+   }
+ }
