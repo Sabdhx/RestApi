@@ -74,7 +74,7 @@ export const Login = async (req: Request, res: Response) => {
       // Convert Mongoose document to plain object
       const userInfo = check.toObject();
       const { password: _, ...rest } = userInfo;
-
+       console.log(token)
       // Set a cookie with the token
       res.cookie("token", token, {
           sameSite: "lax",

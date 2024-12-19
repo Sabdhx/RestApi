@@ -1,7 +1,8 @@
 import express from "express";
-import { createBook } from "./booksController";
+import { createBook, seeBooks, updateBook } from "./booksController";
 import multer from "multer";
 import path from "node:path"
+import middleWare from "../middleware/middleware";
 const router = express.Router();
 
 
@@ -16,7 +17,15 @@ const router = express.Router();
 router.post("/createBook" ,upload.fields([
     {name:"file",maxCount:1},
     {name:"coverImage",maxCount:1}
-]), createBook);
+]),middleWare, createBook);
 
+
+
+router.post("/updatebook/:id" ,upload.fields([
+    {name:"file",maxCount:1},
+    {name:"coverImage",maxCount:1}
+]),middleWare, updateBook);
+
+router.get("/getBook" , seeBooks);
 
 export default router
